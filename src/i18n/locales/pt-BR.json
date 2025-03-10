@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "music": "Músicas",
+    "sermons": "Pregações",
+    "books": "Livros",
+    "children": "Crianças",
+    "church": "Igreja"
+  },
+  "hero": {
+    "title": "Adoração & Louvor",
+    "subtitle": "Levando a palavra de Deus através da música e da pregação, tocando vidas e transformando corações."
+  },
+  "about": {
+    "title": "Sobre o Ministério",
+    "verse": "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
+    "verseRef": "João 3:16"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "sobradinho-adventures",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "phaser": "^3.70.0",
+    "react-router-dom": "^6.22.0",
+    "framer-motion": "^10.16.4",
+    "zustand": "^4.5.0",
+    "howler": "^2.2.4",
+    "lucide-react": "^0.330.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/ios": "^5.0.0",
+    "@capacitor/android": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "@capacitor/cli": "^5.0.0"
+  }
+}

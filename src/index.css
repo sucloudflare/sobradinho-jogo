@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white font-['Press_Start_2P'] antialiased;
+    image-rendering: pixelated;
+  }
+}
+
+@layer components {
+  .pixel-btn {
+    @apply px-6 py-3 bg-red-600 text-white border-b-4 border-red-800 hover:bg-red-700 active:border-b-0 active:mt-1 transition-all duration-100;
+  }
+
+  .game-container {
+    @apply w-full max-w-4xl mx-auto aspect-video bg-black relative overflow-hidden border-4 border-gray-800 shadow-2xl;
+  }
+
+  .health-bar {
+    @apply h-4 bg-red-600 relative overflow-hidden;
+  }
+
+  .health-bar::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    animation: healthPulse 2s infinite;
+  }
+
+  /* Character Sprites */
+  .player-sprite {
+    @apply w-16 h-16 bg-blue-500 relative;
+    clip-path: polygon(
+      50% 0%,
+      100% 25%,
+      100% 75%,
+      50% 100%,
+      0% 75%,
+      0% 25%
+    );
+  }
+
+  .player-sprite::after {
+    content: '';
+    @apply absolute inset-1 bg-blue-400;
+    clip-path: inherit;
+  }
+
+  .enemy-sprite {
+    @apply w-12 h-12 bg-red-500 relative;
+    clip-path: polygon(
+      20% 0%,
+      80% 0%,
+      100% 50%,
+      80% 100%,
+      20% 100%,
+      0% 50%
+    );
+  }
+
+  .enemy-sprite::after {
+    content: '';
+    @apply absolute inset-1 bg-red-400;
+    clip-path: inherit;
+  }
+
+  /* Environment Elements */
+  .building {
+    @apply bg-gray-800 relative;
+    clip-path: polygon(
+      0% 20%,
+      100% 20%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  .building::after {
+    content: '';
+    @apply absolute top-[20%] left-[10%] right-[10%] bottom-0 bg-gray-700;
+  }
+
+  .water {
+    @apply absolute bottom-0 left-0 right-0 h-32 bg-blue-500/50 backdrop-blur-sm;
+    animation: waterFlow 3s ease-in-out infinite;
+  }
+
+  .tree {
+    @apply w-16 h-24 relative;
+  }
+
+  .tree::before {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-8 bg-brown-600;
+  }
+
+  .tree::after {
+    content: '';
+    @apply absolute bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-green-700;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Weapon Effects */
+  .sword-slash {
+    @apply absolute w-24 h-24 pointer-events-none;
+    background: linear-gradient(45deg, transparent 40%, white 45%, transparent 50%);
+    animation: swordSlash 0.2s ease-out forwards;
+  }
+
+  .projectile {
+    @apply absolute w-4 h-4 bg-yellow-500 rounded-full;
+    box-shadow: 0 0 10px #ffd700;
+    animation: projectileGlow 0.5s ease-in-out infinite alternate;
+  }
+
+  /* Power-up Effects */
+  .powerup {
+    @apply absolute w-8 h-8 rounded-full;
+    background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(255,215,0,0) 70%);
+    animation: powerupFloat 2s ease-in-out infinite;
+  }
+
+  /* UI Elements */
+  .damage-number {
+    @apply absolute text-red-500 font-bold pointer-events-none;
+    animation: damageFloat 1s ease-out forwards;
+  }
+
+  .heal-number {
+    @apply absolute text-green-500 font-bold pointer-events-none;
+    animation: healFloat 1s ease-out forwards;
+  }
+
+  /* Mobile Controls */
+  .virtual-joystick {
+    @apply fixed bottom-8 left-8 w-32 h-32 rounded-full bg-white/10 backdrop-blur-sm touch-none;
+  }
+
+  .joystick-handle {
+    @apply absolute w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm;
+    transform: translate(-50%, -50%);
+  }
+
+  .action-button {
+    @apply fixed w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm active:bg-white/20;
+  }
+
+  .attack-button {
+    @apply action-button bottom-8 right-8;
+  }
+
+  .special-button {
+    @apply action-button bottom-8 right-28;
+  }
+}
+
+/* Animations */
+@keyframes healthPulse {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes waterFlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes swordSlash {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+}
+
+@keyframes projectileGlow {
+  0% { box-shadow: 0 0 10px #ffd700; }
+  100% { box-shadow: 0 0 20px #ffd700; }
+}
+
+@keyframes powerupFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes damageFloat {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-20px); opacity: 0; }
+}
+
+@keyframes healFloat {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-20px); opacity: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-container {
+    @apply aspect-[4/3];
+  }
+
+  .player-sprite {
+    @apply w-12 h-12;
+  }
+
+  .enemy-sprite {
+    @apply w-8 h-8;
+  }
+
+  .virtual-joystick {
+    @apply w-24 h-24;
+  }
+
+  .joystick-handle {
+    @apply w-12 h-12;
+  }
+
+  .action-button {
+    @apply w-12 h-12;
+  }
+}
+
+/* Environment Themes */
+.vila-sao-joaquim {
+  background: linear-gradient(to bottom, #2c3e50, #3498db);
+}
+
+.portelinha {
+  background: linear-gradient(to bottom, #2c3e50, #e74c3c);
+}
+
+.vila-sao-francisco {
+  background: linear-gradient(to bottom, #2c3e50, #27ae60);
+}
+
+.barragem {
+  background: linear-gradient(to bottom, #2c3e50, #2980b9);
+}
+
+.balneario {
+  background: linear-gradient(to bottom, #2c3e50, #16a085);
+}
+
+.vila-santana {
+  background: linear-gradient(to bottom, #2c3e50, #8e44ad);
+}

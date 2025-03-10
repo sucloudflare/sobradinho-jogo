@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre",
+    "music": "Música",
+    "sermons": "Sermones",
+    "books": "Libros",
+    "children": "Niños",
+    "church": "Iglesia"
+  },
+  "hero": {
+    "title": "Adoración & Alabanza",
+    "subtitle": "Llevando la palabra de Dios a través de la música y la predicación, tocando vidas y transformando corazones."
+  },
+  "about": {
+    "title": "Sobre el Ministerio",
+    "verse": "Porque de tal manera amó Dios al mundo, que dio a su Hijo unigénito, para que todo aquel que cree en él no se pierda, sino que tenga vida eterna.",
+    "verseRef": "Juan 3:16"
+  }
+}
